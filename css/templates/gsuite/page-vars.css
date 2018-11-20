@@ -20,4 +20,26 @@
   --line-height-6: 2.75rem; /* 44px */
   
   --font-family:  Roboto, Arial, sans-serif;
+  
+  
+  --color-primary: #1a73e8;
+  --color-font-primary: #fff;
+
+  --color-secondary: #fff;
+  --color-font-secondary: #1a73e8;
+
+
+  --color-disabled: #9b9b9b;
+  --color-border: var(--color-dark-grey);
+
+  --color-navbar-primary: #fff;
+  --color-navbar-font-primary: #000;
+
+  --color-input-primary: var(--color-primary);
+  --color-input-font-secondary: var(--color-font-primary);
+
+  --body-min-width: 315px;
+  --content-max-width: 500px;
+  --navbar-height: 53px;
+  --footer-height: 53px;
 }

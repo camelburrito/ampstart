@@ -2,7 +2,7 @@
   "gsuite": {
     "head-tag": {
       "title": "Signup for Gsuite",
-      "canonical-path": "templates/gsuite/index.amp.html",
+      "canonical-path": "https://gsuite.google.com/",
       "extensions": [
       ],
       "css-path": "templates/gsuite/page.css",

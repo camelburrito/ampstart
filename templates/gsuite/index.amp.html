@@ -2,8 +2,49 @@
 <!doctype html>
 <html ⚡>
 {{> ../../utils/amp-page-head.snip.html}}
-<body>
-  <h1> Okay Google! Does it work now</h1>
+<body class="gsuite-signup">
+  <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
+    <h1 class="display-none">Gsuite Signup</h1>
+    <amp-img src="https://gsuite.google.com/img/logo/lockup_gsuite.svg" width="83" height="21" layout="fixed" class="my2" alt="Gsuite Logo"></amp-img>
+  </header>
+  <main>
+    <section id="gsuite-welcome" class="center p4 mt4">
+      <amp-img src="https://gsuite.google.com/img/home/hero-product-lockup.svg" width="166" height="30" layout="fixed" alt="List of icons of Google cloud applications." class="mt4"></amp-img>
+      <h2 class="relative my2">Make it with <amp-img src="https://gsuite.google.com/img/logo/lockup_gsuite.svg" width="83" height="21" layout="fixed" alt="Gsuite" class="mr2"></amp-img><span class="cursor"></span></h2>
+      <p class="h6 my2">Get Gmail, Docs, Drive, Calendar, Meet and more for business</p>
+      
+      <button class="ampstart-btn my2">GET STARTED</button>
+      
+      <amp-img alt="G Suite products" class="mt3 my2" src="https://gsuite.google.com/img/home/hero-devices.png" width="343" height="134" layout="responsive"></amp-img>
+    </section>
+    
+    <section id="gsuite-signup-user-info" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-existing-domain-conf" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-account-info" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-account-interstital" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-choose-plans" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-payment" class="p4 display-none">
+    </section>
+    
+    <section id="gsuite-signup-end-summary" class="p4 display-none">
+    </section>
+    
+  </main>
+  <footer>
+    <button id="prev">Back</button>
+    <progress></progress>
+    <button id="next">Next</button>
+  </footer>
 </body>
 </html>
 {{/gsuite}}

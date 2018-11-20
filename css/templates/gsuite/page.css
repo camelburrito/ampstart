@@ -1,6 +1,8 @@
 @import '../../core';
 @import '../../../components/images/images';
 @import '../../../components/inputs/inputs';
+@import '../../../components/navbar/navbar';
+@import 'page-vars';
 
 /* Typography */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -54,4 +56,39 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   line-height: 1rem;
   letter-spacing: 0.3px;
   font-family: var(--font-family);
+}
+
+
+/*Blinking cursor*/
+.cursor {
+  background-color: #1f86fc;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  animation: cursor-blink 1500ms step-end infinite both;
+}
+
+.cursor::after {
+  background-color: #1f86fc;
+  content: '';
+  display: block;
+  height: 7px;
+  margin: 0 0 0 -3px;
+  width: 7px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+      opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/*Welcome card */
+.gsuite-signup main > section {
+  height: 100vw;
+  padding-bottom: var(--footer-height);
 }
