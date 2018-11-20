@@ -15,7 +15,7 @@
         "href": "https://gsuite.google.com/favicon.ico"
       }
     },
-    "inputs": [
+    "userinfofields": [
       {
         "input": {
           "type": "text",
@@ -55,6 +55,15 @@
           "name": "country"
         }
       }
-    ]
+    ],
+    "domainname": {
+      "input": {
+        "type": "url",
+        "placeholder": "Domain",
+        "id": "domain",
+        "name": "domain"
+      }
+    }
+    
   }
 }

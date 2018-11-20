@@ -18,19 +18,35 @@
       <amp-img alt="G Suite products" class="mt3 my2" src="https://gsuite.google.com/img/home/hero-devices.png" width="343" height="134" layout="responsive"></amp-img>
     </section>
     
-    <section id="gsuite-signup-user-info" class="p4 mt4">
+    <section id="gsuite-signup-user-info" class="p4 mt4 display-none">
       <h2>Let's get started</h2>
       <p class="h5">
         Tell us about yourself to start your 14 day free trial
       </p>
-      <form method="POST" action-xhr="name.py">
-        {{#inputs}}
+      <form method="POST" action-xhr="name.py" class="mt4">
+        {{#userinfofields}}
         {{> ../../components/inputs/inputs.snip.html}}
-        {{/inputs}}
+        {{/userinfofields}}
       </form>
     </section>
     
-    <section id="gsuite-signup-existing-domain-conf" class="p4 mt4 display-none">
+    <section id="gsuite-signup-existing-domain-conf" class="p4 mt4">
+      <h2>Great! Want to set up G Suite with your existing domain?</h2>
+      <form method="POST" action-xhr="name.py" class="mt4">
+        {{#domainname}}
+        {{> ../../components/inputs/inputs.snip.html}}
+        {{/domainname}}
+        <p class="h6">
+          suggested based on your email x@domain.com
+        </p>
+      </form>
+      <ul class="gsuite-domain-features mt2 pl0 h5">
+        <li class="relative caption pl3 my2"> You'll use this domain to set up your G Suite account.</li>
+        <li class="relative caption pl3 my2"> Dont worry, your emails & website won't be affected.</li>
+      </ul>
+      <button class="gsuite-domain-use-another ampstart-btn ampstart-btn-secondary mt2 pl0">
+        I want to use a different domain
+      </button>
     </section>
     
     <section id="gsuite-signup-account-info" class="p4 mt4 display-none">

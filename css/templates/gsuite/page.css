@@ -127,7 +127,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   height: 100%;
 }
 
-.gsuite-signup-progress > li{
+.gsuite-signup-progress > li {
   height: 5px;
   background: var(--color-grey);
   width: 20px;
@@ -135,4 +135,24 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .gsuite-signup-progress [option][selected] {
   background-color: var(--color-primary);
+}
+
+/* Domain name section */
+.gsuite-domain-features {
+  list-style-type: none;
+}
+
+.gsuite-domain-features > li::before {
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M6.61 11.89L3.5 8.78 2.44 9.84 6.61 14l8.95-8.95L14.5 4z" fill="#1a73e8"></path></svg>') no-repeat center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18px;
+  display: block;
+  content: '';
+}
+
+.gsuite-domain-use-another {
+  padding-left: 0;
 }

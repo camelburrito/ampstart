@@ -19,7 +19,7 @@ limitations under the License.
 {{#input}}
 <!-- Start Input -->
 <div class="ampstart-input inline-block relative m0 p0 mb3 {{classes}}">
-  <input type="{{type}}" value="{{value}}" name="{{name}}" id="{{id}}" class="block border-none p0 m0" placeholder="{{placeholder}}" {{disabled}}/>
+  <input type="{{type}}" value="{{value}}" name="{{name}}" id="{{id}}" class="block border-none p0 m0" placeholder="{{placeholder}}" {{disabled}} {{required}}/>
   <label for="{{id}}" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">{{placeholder}}</label>
 </div>
 <!-- End Input-->
@@ -47,7 +47,7 @@ limitations under the License.
 {{#select}}
 <!-- Start Select -->
 <div class="ampstart-input inline-block relative m0 p0 mb3 {{classes}}">
-  <select name="{{name}}" id="{{id}}" class="block border-none  p0 m0" {{disabled}}>
+  <select name="{{name}}" id="{{id}}" class="block border-none  p0 m0" {{disabled}} {{required}}>
     {{#options}}
       <option value="{{value}}">{{.}}</option>
     {{/options}}
@@ -60,7 +60,7 @@ limitations under the License.
 {{#textarea}}
 <!-- Start Textarea -->
 <div class="ampstart-input inline-block relative m0 p0 mb3 {{classes}}">
-  <textarea name="{{name}}" id="{{id}}" class="block border-none  p0 m0" rows="{{rows}}" {{disabled}}></textarea>
+  <textarea name="{{name}}" id="{{id}}" class="block border-none  p0 m0" rows="{{rows}}" {{disabled}} {{required}}></textarea>
   <label for="{{id}}" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">{{placeholder}}</label>
 </div>
 <!-- End Textarea -->
@@ -69,7 +69,7 @@ limitations under the License.
 {{#checkbox}}
 <!-- Start Checkbox -->
 <div class="ampstart-input ampstart-input-chk inline-block relative m0 p0 mb3 {{classes}}">
-    <input type="checkbox" value="{{value}}" name="{{name}}" id="{{id}}" class="p0 m0 relative" {{checked}} {{disabled}}/>
+    <input type="checkbox" value="{{value}}" name="{{name}}" id="{{id}}" class="p0 m0 relative" {{checked}} {{disabled}} {{required}}/>
     <label for="{{id}}" class="" aria-hidden="true">{{label}}</label>
 </div>
 <!-- End Checkbox -->
