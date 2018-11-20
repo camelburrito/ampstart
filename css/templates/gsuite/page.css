@@ -89,6 +89,50 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 /*Welcome card */
 .gsuite-signup main > section {
-  height: 100vw;
+  height: 93vh;
   padding-bottom: var(--footer-height);
+}
+
+/* Button */
+.ampstart-btn {
+  border: 0;
+}
+
+/* inputs */
+.ampstart-input > label {
+  font-size: var(--h6);
+}
+
+.ampstart-input > select+label::before {
+  content: "►";
+  color: var(--color-grey);
+  right: 15px;
+  zoom: 0.6;
+  top: 35px;
+  transform: rotate(90deg);
+}
+
+/* Footer */
+.gsuite-signup > footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-height);
+}
+
+/* Progress bar */
+.gsuite-signup-progress {
+  list-style-type: none;
+  height: 100%;
+}
+
+.gsuite-signup-progress > li{
+  height: 5px;
+  background: var(--color-grey);
+  width: 20px;
+}
+
+.gsuite-signup-progress [option][selected] {
+  background-color: var(--color-primary);
 }
