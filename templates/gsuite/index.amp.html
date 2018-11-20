@@ -30,7 +30,7 @@
       </form>
     </section>
     
-    <section id="gsuite-signup-existing-domain-conf" class="p4 mt4">
+    <section id="gsuite-signup-existing-domain-conf" class="p4 mt4 display-none">
       <h2>Great! Want to set up G Suite with your existing domain?</h2>
       <form method="POST" action-xhr="name.py" class="mt4">
         {{#domainname}}
@@ -49,7 +49,17 @@
       </button>
     </section>
     
-    <section id="gsuite-signup-account-info" class="p4 mt4 display-none">
+    <section id="gsuite-signup-account-info" class="p4 mt4">
+      <h2>Let's create your account</h2>
+      <p class="h5">
+        You'll use your username to sign into your G Suite account and create your business email address.
+      </p>
+      {{#createaccount}}
+      {{> ../../components/inputs/inputs.snip.html}}
+      {{/createaccount}}
+      <p class="h5">
+        By clicking "Next" you agree to the <a href="#" class="">G Suite Agreement</a>
+      </p>
     </section>
     
     <section id="gsuite-signup-account-interstital" class="p4 mt4 display-none">
