@@ -1,0 +1,17 @@
+{
+  "gsuite": {
+    "head-tag": {
+      "title": "Signup for Gsuite",
+      "canonical-path": "templates/gsuite/index.amp.html",
+      "extensions": [
+      ],
+      "css-path": "templates/gsuite/page.css",
+      "font-stylesheets": [
+        "https://fonts.googleapis.com/css?family=Roboto"
+      ],
+      "favicon": {
+        "href": "https://gsuite.google.com/favicon.ico"
+      }
+    }
+  }
+}
