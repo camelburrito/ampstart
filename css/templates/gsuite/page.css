@@ -156,3 +156,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .gsuite-domain-use-another {
   padding-left: 0;
 }
+
+/*Account cretion*/
+.gsuite-user-agreement-link {
+  padding: 0;
+}
