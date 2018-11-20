@@ -36,9 +36,9 @@
   --color-navbar-font-primary: #000;
 
   
-  --color-input-primary: var(--color-primary);
+  --color-input-primary: var(--color-primary);/*
   --color-input-font-primary: var(--color-font-secondary);
-  --color-input-secondary: var(--color-primary);
+  --color-input-secondary: var(--color-primary);*/
   --color-input-font-secondary: var(--color-font-secondary);
 
   --body-min-width: 315px;
