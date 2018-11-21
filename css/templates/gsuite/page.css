@@ -88,9 +88,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 /*Welcome card */
-.gsuite-signup main > section {
+.gsuite-signup main  {
   height: 93vh;
   padding-bottom: var(--footer-height);
+}
+.gsuite-signup main > section {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Button */
@@ -165,6 +172,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /* Material spinner*/
 
 .material-spinner {
+  margin: 0 auto;
   animation: rotator 1.4s linear infinite;
 }
 
@@ -205,10 +213,42 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /* Plans page */
 .gsuite-plan-selection-list > li {
   border-radius: 10px;
-  border-color: var(--grey);
+  border-color: var(--color-grey);
 }
 
 .gsuite-plan-radio {
   min-width: 20px;
   flex-basis: 10px;
+}
+
+
+/*Page state*/
+#gsuite-welcome,
+#gsuite-signup-user-info,
+#gsuite-signup-existing-domain-conf,
+#gsuite-signup-account-info,
+#gsuite-signup-account-interstital,
+#gsuite-signup-choose-plans,
+#gsuite-signup-payment,
+#gsuite-signup-end-summary {
+  transform: translateX(100%);
+  will-change: transform;
+}
+
+.welcome #gsuite-welcome,
+.signup-user-info #gsuite-signup-user-info,
+.signup-existing-domain-conf #gsuite-signup-existing-domain-conf,
+.signup-account-info #gsuite-signup-account-info,
+.signup-account-interstital #gsuite-signup-account-interstital,
+.signup-choose-plans #gsuite-signup-choose-plans,
+.signup-payment #gsuite-signup-payment,
+.signup-end-summary #gsuite-signup-end-summary {
+  transform: translateX(0);
+  transition: transform 233ms cubic-bezier(0,0,.21,1);
+}
+
+.welcome footer,
+.signup-account-interstital footer,
+.signup-end-summary footer {
+  display: none;
 }

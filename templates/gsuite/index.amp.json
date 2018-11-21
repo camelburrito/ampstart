@@ -5,7 +5,8 @@
       "canonical-path": "https://gsuite.google.com/",
       "extensions": [
         "amp-form",
-        "amp-selector"
+        "amp-selector",
+        "amp-bind"
       ],
       "css-path": "templates/gsuite/page.css",
       "font-stylesheets": [
