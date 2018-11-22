@@ -23,7 +23,9 @@
           "value": "",
           "placeholder": "First name",
           "id": "firstname",
-          "name": "firstname"
+          "name": "firstname",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {fn: event.value}}})",
+          "required": "required"
         }
       },
       {
@@ -32,7 +34,9 @@
           "value": "",
           "placeholder": "Last name",
           "id": "lastname",
-          "name": "lastname"
+          "name": "lastname",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {ln: event.value}}})",
+          "required": "required"
         }
       },
       {
@@ -41,7 +45,9 @@
           "value": "",
           "placeholder": "Current email address",
           "id": "emailid",
-          "name": "emailid"
+          "name": "emailid",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})",
+          "required": "required"
         }
       },
       {

@@ -7,7 +7,7 @@
 | templates/blog/page.css             | 23331                | 23.33 KB |
 | templates/e-commerce/page.css       | 39763                | 39.76 KB |
 | templates/gallery/page.css          | 4752                 | 4.752 KB |
-| templates/gsuite/page.css           | 18586                | 18.59 KB |
+| templates/gsuite/page.css           | 23086                | 23.09 KB |
 | templates/land-see/page.css         | 43396                | 43.40 KB |
 | templates/lune/page.css             | 41357                | 41.36 KB |
 | templates/test/page.css             | 23203                | 23.20 KB |

@@ -10,6 +10,10 @@
       "source": "/api/places", "function": "places"
     }, {
       "source": "/api/search", "function": "search"
+    }, {
+      "source": "/api/userinfo", "function": "userInfoSubmit"
+    }, {
+      "source": "/api/domainverify", "function": "domainVerify"
     }]
   }
 }

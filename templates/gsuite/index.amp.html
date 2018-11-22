@@ -7,6 +7,12 @@
     <script type="application/json">
       {
         "currentPage": "welcome",
+        "userInfo": {
+          "fn": "",
+          "ln": "",
+          "email": "",
+          "domain": ""
+        },
         "welcome": {
           "next": "signup-user-info",
           "prev": ""
@@ -62,21 +68,47 @@
       <p class="h5">
         Tell us about yourself to start your 14 day free trial
       </p>
-      <form method="POST" action-xhr="name.py" class="mt4" id="userinfoform">
+      <!-- AMP-Access-Control-Allow-Source-Origin  -->
+      <form method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/userInfoSubmit" on="submit-success:AMP.setState({
+        state: {
+          currentPage: state[state.currentPage].next || state.currentPage,
+          userInfo: {domain: event.response.domain || ''}
+        }
+      })" class="mt4" id="userinfoform" no-cors>
         {{#userinfofields}}
         {{> ../../components/inputs/inputs.snip.html}}
         {{/userinfofields}}
       </form>
+      <footer class="flex justify-between">
+        <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({
+          state: {
+            currentPage: state[state.currentPage].prev || state.currentPage
+          }
+        })">Back</button>
+        <amp-selector layout="container" disabled multiple>
+          <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+            <li class="mx1" option="1" selected></li>
+            <li class="mx1" option="2"></li>
+            <li class="mx1" option="3"></li>
+            <li class="mx1" option="4"></li>
+            <li class="mx1" option="5"></li>
+          </ul>
+        </amp-selector>
+        <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:userinfoform.submit">Next</button>
+      </footer>
     </section>
     
     <section id="gsuite-signup-existing-domain-conf" class="p4 mt4">
       <h2>Great! Want to set up G Suite with your existing domain?</h2>
-      <form method="POST" action-xhr="name.py" class="mt4">
-        {{#domainname}}
-        {{> ../../components/inputs/inputs.snip.html}}
-        {{/domainname}}
+      <form method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/domainVerify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt4" id="domainverify">
+        <!-- Start Input -->
+        <div class="ampstart-input inline-block relative m0 p0 mb3 ">
+          <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Domain">
+          <label for="domain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Domain</label>
+        </div>
+        <!-- End Input-->
         <p class="h6">
-          suggested based on your email x@domain.com
+          suggested based on your email <span [text]="state.userInfo.email"></span>
         </p>
       </form>
       <ul class="gsuite-domain-features mt2 pl0 h5">
@@ -86,6 +118,19 @@
       <button class="gsuite-domain-use-another ampstart-btn ampstart-btn-secondary mt2 pl0">
         I want to use a different domain
       </button>
+      <footer class="flex justify-between">
+        <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
+        <amp-selector layout="container" disabled multiple>
+          <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+            <li class="mx1" option="1" selected></li>
+            <li class="mx1" option="2" selected></li>
+            <li class="mx1" option="3"></li>
+            <li class="mx1" option="4"></li>
+            <li class="mx1" option="5"></li>
+          </ul>
+        </amp-selector>
+        <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:domainverify.submit">Next</button>
+      </footer>
     </section>
     
     <section id="gsuite-signup-account-info" class="p4 mt4">
@@ -179,7 +224,7 @@
     </section>
 
   </main>
-  <footer class="flex justify-between">
+  <!-- <footer class="flex justify-between">
     <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
     <amp-selector layout="container" disabled multiple>
       <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
@@ -191,7 +236,7 @@
       </ul>
     </amp-selector>
     <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">Next</button>
-  </footer>
+  </footer> -->
 </body>
 </html>
 {{/gsuite}}
