@@ -376,3 +376,16 @@ exports.places = functions.https.onRequest((req, res) => {
     res.end();
   });
 });
+
+
+exports.userInfoSubmit = functions.https.onRequest((req, res) => {
+  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
+  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
+  res.header('access-control-allow-credentials', 'true');
+  //res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
+  res.status(200).send({"status": "success"});
+  // cors(req, res, ()=> {
+  //   res.json({"status": "success"});
+  // });
+});
