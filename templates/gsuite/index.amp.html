@@ -11,7 +11,8 @@
           "fn": "",
           "ln": "",
           "email": "",
-          "domain": ""
+          "domain": "",
+          "plans": null
         },
         "welcome": {
           "next": "signup-user-info",
@@ -103,7 +104,7 @@
       <form method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/domainVerify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt4" id="domainverify">
         <!-- Start Input -->
         <div class="ampstart-input inline-block relative m0 p0 mb3 ">
-          <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Domain">
+          <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Domain" required="required">
           <label for="domain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Domain</label>
         </div>
         <!-- End Input-->
@@ -133,19 +134,51 @@
       </footer>
     </section>
     
-    <section id="gsuite-signup-account-info" class="p4 mt4">
-      <h2>Let's create your account</h2>
-      <p class="h6 my4 ">
-        You'll use your username to sign into your G Suite account and create your business email address.
-      </p>
-      <form method="POST" action-xhr="name.py" class="mt4">
-      {{#createaccount}}
-      {{> ../../components/inputs/inputs.snip.html}}
-      {{/createaccount}}
-      </form>
-      <p class="h5 my2 caption">
-        By clicking "Next" you agree to the <a href="#" class="gsuite-user-agreement-link ampstart-btn ampstart-btn-secondary caption inline-block p0">G Suite Agreement</a>
-      </p>
+    <section id="gsuite-signup-account-info" class="">
+      <form  method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/createAccount" on="valid:AMP.setState({
+      state: {currentPage: state[state.currentPage].next || state.currentPage}
+    });submit-success:AMP.setState({
+        state: {
+          currentPage: state[state.currentPage].next || state.currentPage,
+          userInfo: {plans: event.response.plans || null}
+        }
+      })" class="" id="accountcreateform">
+        <div id="gsuite-signup-account-info-user" class="p4 mt4">
+          <h2>Let's create your account</h2>
+          <p class="h6 my4 ">
+            You'll use your username to sign into your G Suite account and create your business email address.
+          </p>
+          <div class="mt4 relative">
+            {{#createaccount}}
+            {{> ../../components/inputs/inputs.snip.html}}
+            {{/createaccount}}
+            <span class="gsuite-signup-account-info-domain-label absolute" [text]="'@' + state.userInfo.domain"></span>
+          </div>
+          <p class="h5 my2 caption">
+            By clicking "Next" you agree to the <a href="#" class="gsuite-user-agreement-link ampstart-btn ampstart-btn-secondary caption inline-block p0">G Suite Agreement</a>
+          </p>
+        <footer class="flex justify-between">
+          <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="
+          tap:AMP.setState({
+            state: {currentPage: state[state.currentPage].prev || state.currentPage}
+          });
+          ">Back</button>
+          <amp-selector layout="container" disabled multiple>
+            <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+              <li class="mx1" option="1" selected></li>
+              <li class="mx1" option="2" selected></li>
+              <li class="mx1" option="3" selected></li>
+              <li class="mx1" option="4"></li>
+              <li class="mx1" option="5"></li>
+            </ul>
+          </amp-selector>
+          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:accountcreateform.submit;">Next</button>
+        </footer>
+      </div>
+      <div submit-success template="plans_template">
+        
+      </div>
+    <form>
     </section>
     
     <section id="gsuite-signup-account-interstital" class="p4 mt4 flex flex-column justify-center items-center">
@@ -157,62 +190,72 @@
          <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
       </svg>      
     </section>
-    
-    <section id="gsuite-signup-choose-plans" class="p4 mt4">
-      <h2>Choose your payment plan</h2>
-      <h3 class="h5 bold"> G Suite Basic</h3>
-      <form method="POST" action-xhr="name.py" class="mt4">
-        <ul class="gsuite-plan-selection-list list-reset">
-        <li class="border p2 my2">
-          <label class="flex flex-column justify-center">
-            <div class="flex items-center justify-between">
-              <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
-                <input type="radio" value="1" name="plan" id="plan1" class="relative">
-              </div>
-              <h4 class="h6 inline">Flexible plan</h4>
-              <p class="inline subhead1 bold">$5 <span class="subhead2"> /user/month</span></p>
-            </div>
-            
-            <ul class="list-reset pl4 ml1 caption">
-              <li class="my1">
-                No long term commitment
-              </li>
-              <li class="my1">
-                Pay monthly (starting DD/MM/YY)
-              </li>
-              <li class="my1">
-                Add or remove users and email addresses
-              </li>
+    <template type="amp-mustache" id="plans_template">
+      <div>
+        <section id="gsuite-signup-choose-plans" class="p4 mt4">
+        <h2>Choose your payment plan</h2>
+        <h3 class="h5 bold"> G Suite Basic</h3>
+        <form method="POST" action-xhr="http://localhost:5001/ampstart-dev-skrish/us-central1/savePlan" id="planselectionplan" class="mt4" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">
+          <ul class="gsuite-plan-selection-list list-reset">
+            <%#plans%>
+            <li class="border p2 my2">
+              <label class="flex flex-column justify-center">
+                <div class="flex items-center justify-between">
+                  <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
+                    <input type="radio" value="<%id%>" name="plan" class="relative" required="required">
+                  </div>
+                  <h4 class="h6 inline"><%name%></h4>
+                  <p class="inline subhead1 bold"><%price%> <span class="subhead2"><%term%></span></p>
+                </div>
+                <ul class="list-reset pl4 ml1 caption">
+                  <%#features%>
+                  <li class="my1">
+                   <%.%>
+                  </li>
+                  <%/features%>
+                </ul>
+              </label>
+            </li>
+            <%/plans%>
+          </ul>
+        </form>
+
+        <footer class="flex justify-between">
+          <button id="prev" class="ampstart-btn ampstart-btn-secondary" disabled>Back</button>
+          <amp-selector layout="container" disabled multiple>
+            <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+              <li class="mx1" option="1" selected></li>
+              <li class="mx1" option="2" selected></li>
+              <li class="mx1" option="3" selected></li>
+              <li class="mx1" option="4" selected></li>
+              <li class="mx1" option="5"></li>
             </ul>
-          </label>
-        </li>
-        <li class="border p2 my2">
-          <label class="flex flex-column justify-center">
-            <div class="flex items-center justify-between">
-              <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
-                <input type="radio" value="2" name="plan" id="plan2" class="relative">
-              </div>
-              <h4 class="h6 inline">Annual plan</h4>
-              <p class="inline subhead1 bold">$50 <span class="subhead2"> /user/year</span></p>
-            </div>
-            
-            <ul class="list-reset pl4 ml1 caption">
-              <li class="my1">
-                Pay yearly (starting DD/MM/YY)
-              </li>
-              <li class="my1">
-                Add or remove users and email addresses
-              </li>
-            </ul>
-          </label>
-        </li>
-      </ul>
-      </form>
-    </section>
+          </amp-selector>
+          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:planselectionplan.submit">Next</button>
+        </footer>
+
+
+      </section>
+      </div>
+    </template>
     
     <section id="gsuite-signup-payment" class="p4 mt4">
       <h2>Review & Checkout</h2>
       <!-- Checkout iframe here  -->
+      
+      <footer class="flex justify-between">
+          <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
+          <amp-selector layout="container" disabled multiple>
+            <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+              <li class="mx1" option="1" selected></li>
+              <li class="mx1" option="2" selected></li>
+              <li class="mx1" option="3" selected></li>
+              <li class="mx1" option="4" selected></li>
+              <li class="mx1" option="5" selected></li>
+            </ul>
+          </amp-selector>
+          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">Next</button>
+        </footer>
     </section>
     
     <section id="gsuite-signup-end-summary" class="p4 mt4 center flex flex-column items-center justify-center">
@@ -224,19 +267,6 @@
     </section>
 
   </main>
-  <!-- <footer class="flex justify-between">
-    <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
-    <amp-selector layout="container" disabled multiple>
-      <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
-        <li class="mx1" option="1" selected></li>
-        <li class="mx1" option="2"></li>
-        <li class="mx1" option="3"></li>
-        <li class="mx1" option="4"></li>
-        <li class="mx1" option="5"></li>
-      </ul>
-    </amp-selector>
-    <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">Next</button>
-  </footer> -->
 </body>
 </html>
 {{/gsuite}}

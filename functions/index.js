@@ -395,3 +395,44 @@ exports.domainVerify = functions.https.onRequest((req, res) => {
   res.header('Content-Type', 'application/json');
   res.status(200).send({"status": true});
 });
+
+exports.createAccount = functions.https.onRequest((req, res) => {
+  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
+  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
+  res.header('access-control-allow-credentials', 'true');
+  res.header('Content-Type', 'application/json');
+  var plans = [
+    {
+      "name": "Flexible plan",
+      "id": "fp",
+      "price": "$5",
+      "term": "/user/month",
+      "features": [
+        "No long term commitment",
+        "Pay monthly (starting DD/MM/YY)",
+        "Add or remove users and email addresses"
+      ]
+    },
+    {
+      "name": "Annual plan",
+      "id": "ap",
+      "price": "$50",
+      "term": "/user/year",
+      "features": [
+        "Pay monthly (starting DD/MM/YY)",
+        "Add or remove users and email addresses"
+      ]
+    }
+  ];
+  res.status(200).send({"status": true, "plans": plans});
+});
+
+exports.savePlan = functions.https.onRequest((req, res) => {
+  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
+  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
+  res.header('access-control-allow-credentials', 'true');
+  res.header('Content-Type', 'application/json');
+  res.status(200).send({"status": true});
+});

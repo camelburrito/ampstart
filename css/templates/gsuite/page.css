@@ -58,6 +58,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: var(--font-family);
 }
 
+/* Body */
+main {
+  overflow-x: hidden;
+}
 
 /*Blinking cursor*/
 .cursor {
@@ -92,7 +96,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   height: 93vh;
   padding-bottom: var(--footer-height);
 }
-.gsuite-signup main > section {
+.gsuite-signup main > section,
+#gsuite-signup-choose-plans,
+#gsuite-signup-account-info-user,
+#accountcreateform {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -221,12 +228,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   flex-basis: 10px;
 }
 
+/* Account info */
+.gsuite-signup-account-info-domain-label {
+  top: 25px;
+  right: 10px;
+  color: var(--color-grey);
+}
+
 
 /*Page state*/
 #gsuite-welcome,
 #gsuite-signup-user-info,
 #gsuite-signup-existing-domain-conf,
 #gsuite-signup-account-info,
+#gsuite-signup-account-info-user,
 #gsuite-signup-account-interstital,
 #gsuite-signup-choose-plans,
 #gsuite-signup-payment,
@@ -240,7 +255,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .signup-user-info #gsuite-signup-user-info,
 .signup-existing-domain-conf #gsuite-signup-existing-domain-conf,
 .signup-account-info #gsuite-signup-account-info,
+.signup-account-info #gsuite-signup-account-info-user,
 .signup-account-interstital #gsuite-signup-account-interstital,
+.signup-choose-plans #gsuite-signup-account-info,
 .signup-choose-plans #gsuite-signup-choose-plans,
 .signup-payment #gsuite-signup-payment,
 .signup-end-summary #gsuite-signup-end-summary {

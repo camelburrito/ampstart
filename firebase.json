@@ -14,6 +14,10 @@
       "source": "/api/userinfo", "function": "userInfoSubmit"
     }, {
       "source": "/api/domainverify", "function": "domainVerify"
+    }, {
+      "source": "/api/createaccount", "function": "createAccount"
+    }, {
+      "source": "/api/saveplan", "function": "savePlan"
     }]
   }
 }
