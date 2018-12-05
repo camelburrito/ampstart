@@ -6,11 +6,17 @@
       "extensions": [
         "amp-form",
         "amp-selector",
-        "amp-bind",
-        "amp-mustache"
+        "amp-bind"
+      ],
+      "templates": [
+        {
+          "name": "amp-mustache",
+          "version": "0.2"
+        }
       ],
       "css-path": "templates/gsuite/page.css",
       "font-stylesheets": [
+        "https://fonts.googleapis.com/css?family=Google+Sans",
         "https://fonts.googleapis.com/css?family=Roboto"
       ],
       "favicon": {
@@ -54,9 +60,9 @@
       {
         "select": {
           "options": [
-            "Algeria", "Argentina", "Australia", "Austria", "Barbados", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cameroon", "Canada", "China", "Colombia", "Cote d'Ivoire", "Czech Republic", "Denmark ", "Egypt", "Finland", "France", "Germany", "Greece",
+            "United States", "Algeria", "Argentina", "Australia", "Austria", "Barbados", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cameroon", "Canada", "China", "Colombia", "Cote d'Ivoire", "Czech Republic", "Denmark ", "Egypt", "Finland", "France", "Germany", "Greece",
             "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Irak", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kuwait", "Malaysia", "Mexico", "Morocco", "Nepal", "Netherlands", "New Zealand", "Norway", "Pakistan", "Philippines", "Poland",
-            "Portugal", "Qatar", "Romania", "Russia", "Samoa", "Saudi Arabia", "Sri Lanka", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Tonga", "Tunisia", "Turkey", "United Arab Emirates", "United Kingdom", "United States"
+            "Portugal", "Qatar", "Romania", "Russia", "Samoa", "Saudi Arabia", "Sri Lanka", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Tonga", "Tunisia", "Turkey", "United Arab Emirates", "United Kingdom"
           ],
           "placeholder": "Country",
           "id": "country",

@@ -114,16 +114,32 @@ main {
   left: 0;
   right: 0;
   height: var(--footer-height);
+  margin-bottom: 4px;
 }
 
 /* Button */
 .ampstart-btn {
+  font-family: "Google Sans",Roboto,Arial,sans-serif;
   border: 0;
+  line-height: 1rem;
+  padding: .5em 1em;
+  border-radius: 4px;
+  max-height: var(--h1);
 }
 
 /* inputs */
+.ampstart-input {
+  font-size: 0.875rem;
+}
+
+.ampstart-input > textarea,
+.ampstart-input > select,
+.ampstart-input > input {
+  border-color: var(--color-grey);
+}
+
 .ampstart-input > label {
-  font-size: var(--h6);
+  font-size: 0.75rem;
 }
 
 .ampstart-input > select+label::before {

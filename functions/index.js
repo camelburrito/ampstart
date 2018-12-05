@@ -379,8 +379,15 @@ exports.places = functions.https.onRequest((req, res) => {
 
 
 exports.userInfoSubmit = functions.https.onRequest((req, res) => {
-  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
-  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  const port = process.env.NODE_ENV === 'production'
+    ? null
+    : new url.URL(req.query.__amp_source_origin).port;
+
+  const host = process.env.NODE_ENV === 'production'
+    ? `https://${req.hostname}`
+    : `http://${req.hostname}:${port}`;
+  res.header('access-control-allow-origin', host);
+  res.header('AMP-Access-Control-Allow-Source-Origin', host);
   res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.header('access-control-allow-credentials', 'true');
   res.header('Content-Type', 'application/json');
@@ -388,8 +395,15 @@ exports.userInfoSubmit = functions.https.onRequest((req, res) => {
 });
 
 exports.domainVerify = functions.https.onRequest((req, res) => {
-  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
-  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  const port = process.env.NODE_ENV === 'production'
+    ? null
+    : new url.URL(req.query.__amp_source_origin).port;
+
+  const host = process.env.NODE_ENV === 'production'
+    ? `https://${req.hostname}`
+    : `http://${req.hostname}:${port}`;
+  res.header('access-control-allow-origin', host);
+  res.header('AMP-Access-Control-Allow-Source-Origin', host);
   res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.header('access-control-allow-credentials', 'true');
   res.header('Content-Type', 'application/json');
@@ -397,8 +411,15 @@ exports.domainVerify = functions.https.onRequest((req, res) => {
 });
 
 exports.createAccount = functions.https.onRequest((req, res) => {
-  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
-  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  const port = process.env.NODE_ENV === 'production'
+    ? null
+    : new url.URL(req.query.__amp_source_origin).port;
+
+  const host = process.env.NODE_ENV === 'production'
+    ? `https://${req.hostname}`
+    : `http://${req.hostname}:${port}`;
+  res.header('access-control-allow-origin', host);
+  res.header('AMP-Access-Control-Allow-Source-Origin', host);
   res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.header('access-control-allow-credentials', 'true');
   res.header('Content-Type', 'application/json');
@@ -429,8 +450,15 @@ exports.createAccount = functions.https.onRequest((req, res) => {
 });
 
 exports.savePlan = functions.https.onRequest((req, res) => {
-  res.header('access-control-allow-origin', `http://${req.hostname}:5000`);
-  res.header('AMP-Access-Control-Allow-Source-Origin', `http://${req.hostname}:5000`);
+  const port = process.env.NODE_ENV === 'production'
+    ? null
+    : new url.URL(req.query.__amp_source_origin).port;
+
+  const host = process.env.NODE_ENV === 'production'
+    ? `https://${req.hostname}`
+    : `http://${req.hostname}:${port}`;
+  res.header('access-control-allow-origin', host);
+  res.header('AMP-Access-Control-Allow-Source-Origin', host);
   res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.header('access-control-allow-credentials', 'true');
   res.header('Content-Type', 'application/json');

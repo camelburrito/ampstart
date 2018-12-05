@@ -43,23 +43,26 @@ function collectResources(filepath, html, templateName, done) {
                 const src = pair.trim().split(' ')[0];
                 if (src.indexOf('http://') == 0 ||
                     src.indexOf('https://') == 0 ||
-                    src.indexOf('www.') == 0) {
+                    src.indexOf('www.') == 0 ||
+                    src.indexOf('data:image') >= 0) {
                   return false;
                 }
                 const abspath = path.resolve(path.dirname(filepath), src);
                 return abspath.replace(`${process.cwd()}/`, '');
               });
         }));
-    const imgs = [].slice.call(ampimgs).map(function(el) {
-      const src = el.getAttribute('src');
-      if (src.indexOf('http://') == 0 ||
-          src.indexOf('https://') == 0 ||
-          src.indexOf('www.') == 0) {
-        return false;
-      }
-      const abspath = path.resolve(path.dirname(filepath), src);
-      return abspath.replace(`${process.cwd()}/`, '');
-    });
+        const imgs = [];
+    // const imgs = [].slice.call(ampimgs).map(function(el) {
+//       const src = el.getAttribute('src');
+//       if (src.indexOf('http://') == 0 ||
+//           src.indexOf('https://') == 0 ||
+//           src.indexOf('www.') == 0 ||
+//           src.indexOf('data:image') >= 0) {
+//         return false;
+//       }
+//       const abspath = path.resolve(path.dirname(filepath), src);
+//       return abspath.replace(`${process.cwd()}/`, '');
+//     });
     const name = filepath.replace(`${process.cwd()}/`, '');
     imgs.push.apply(imgs, srcsetimgs);
     imgs.forEach(function(imgpath) {

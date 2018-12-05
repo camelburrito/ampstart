@@ -63,24 +63,23 @@
       
       <amp-img alt="G Suite products" class="mt3 my2" src="https://gsuite.google.com/img/home/hero-devices.png" width="343" height="134" layout="responsive"></amp-img>
     </section>
-    
     <section id="gsuite-signup-user-info" class="p4 mt4">
-      <h2>Let's get started</h2>
-      <p class="h5">
+      <h2 class="h4 mb2">Let's get started</h2>
+      <p class="body2">
         Tell us about yourself to start your 14 day free trial
       </p>
       <!-- AMP-Access-Control-Allow-Source-Origin  -->
-      <form method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/userInfoSubmit" on="submit-success:AMP.setState({
+      <form method="POST" action-xhr=" /api/userinfosubmit" on="submit-success:AMP.setState({
         state: {
           currentPage: state[state.currentPage].next || state.currentPage,
           userInfo: {domain: event.response.domain || ''}
         }
-      })" class="mt4" id="userinfoform" no-cors>
+      })" class="mt4" id="userinfoform">
         {{#userinfofields}}
         {{> ../../components/inputs/inputs.snip.html}}
         {{/userinfofields}}
       </form>
-      <footer class="flex justify-between">
+      <footer class="flex justify-between items-center">
         <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({
           state: {
             currentPage: state[state.currentPage].prev || state.currentPage
@@ -95,31 +94,31 @@
             <li class="mx1" option="5"></li>
           </ul>
         </amp-selector>
-        <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:userinfoform.submit">Next</button>
+        <button id="next" class="ampstart-btn mr1" on="tap:userinfoform.submit">Next</button>
       </footer>
     </section>
-    
     <section id="gsuite-signup-existing-domain-conf" class="p4 mt4">
-      <h2>Great! Want to set up G Suite with your existing domain?</h2>
-      <form method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/domainVerify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt4" id="domainverify">
+      <h2 class="h4 mb2">Great! Want to set up G Suite with your existing domain?</h2>
+      <p class="body2">Enter your domain to setup cusom email like <span [text]="state.userInfo.email"></span></p>
+      <form method="POST" action-xhr=" /api/domainverify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt2" id="domainverify">
         <!-- Start Input -->
-        <div class="ampstart-input inline-block relative m0 p0 mb3 ">
+        <div class="ampstart-input inline-block relative m0 p0 mb1 ">
           <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Domain" required="required">
           <label for="domain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Domain</label>
         </div>
         <!-- End Input-->
-        <p class="h6">
-          suggested based on your email <span [text]="state.userInfo.email"></span>
+        <p class="caption">
+          Suggested based on your email <span [text]="state.userInfo.email"></span>
         </p>
       </form>
       <ul class="gsuite-domain-features mt2 pl0 h5">
-        <li class="relative caption pl3 my2"> You'll use this domain to set up your G Suite account.</li>
-        <li class="relative caption pl3 my2"> Dont worry, your emails & website won't be affected.</li>
+        <li class="relative caption pl4 my2"> You'll use this domain to set up your G Suite account.</li>
+        <li class="relative caption pl4 my2"> Dont worry, your emails & website won't be affected.</li>
       </ul>
       <button class="gsuite-domain-use-another ampstart-btn ampstart-btn-secondary mt2 pl0">
         I want to use a different domain
       </button>
-      <footer class="flex justify-between">
+      <footer class="flex justify-between items-center">
         <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
         <amp-selector layout="container" disabled multiple>
           <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
@@ -130,12 +129,11 @@
             <li class="mx1" option="5"></li>
           </ul>
         </amp-selector>
-        <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:domainverify.submit">Next</button>
+        <button id="next" class="ampstart-btn mr1" on="tap:domainverify.submit">Next</button>
       </footer>
     </section>
-    
     <section id="gsuite-signup-account-info" class="">
-      <form  method="POST" action-xhr=" http://localhost:5001/ampstart-dev-skrish/us-central1/createAccount" on="valid:AMP.setState({
+      <form  method="POST" action-xhr=" /api/createaccount" on="valid:AMP.setState({
       state: {currentPage: state[state.currentPage].next || state.currentPage}
     });submit-success:AMP.setState({
         state: {
@@ -144,8 +142,8 @@
         }
       })" class="" id="accountcreateform">
         <div id="gsuite-signup-account-info-user" class="p4 mt4">
-          <h2>Let's create your account</h2>
-          <p class="h6 my4 ">
+          <h2 class="h4 mb2">Let's create your account</h2>
+          <p class="body2 mb4 ">
             You'll use your username to sign into your G Suite account and create your business email address.
           </p>
           <div class="mt4 relative">
@@ -157,7 +155,7 @@
           <p class="h5 my2 caption">
             By clicking "Next" you agree to the <a href="#" class="gsuite-user-agreement-link ampstart-btn ampstart-btn-secondary caption inline-block p0">G Suite Agreement</a>
           </p>
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
           <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="
           tap:AMP.setState({
             state: {currentPage: state[state.currentPage].prev || state.currentPage}
@@ -172,18 +170,17 @@
               <li class="mx1" option="5"></li>
             </ul>
           </amp-selector>
-          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:accountcreateform.submit;">Next</button>
+          <button id="next" class="ampstart-btn mr1" on="tap:accountcreateform.submit;">Next</button>
         </footer>
       </div>
       <div submit-success template="plans_template">
         
       </div>
-    <form>
+    </form>
     </section>
-    
     <section id="gsuite-signup-account-interstital" class="p4 mt4 flex flex-column justify-center items-center">
-      <h2 class="relative my2">Make it with <amp-img src="https://gsuite.google.com/img/logo/lockup_gsuite.svg" width="83" height="21" layout="fixed" alt="Gsuite" class="mr2"></amp-img></h2>
-      <p class="h6 my1">
+      <h2 class="h4 relative my2">Make it with <amp-img src="https://gsuite.google.com/img/logo/lockup_gsuite.svg" width="83" height="21" layout="fixed" alt="Gsuite" class="mr2"></amp-img></h2>
+      <p class="body2 my1">
         Almost there , we're creating your account
       </p>
       <svg class="material-spinner block" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -192,10 +189,10 @@
     </section>
     <template type="amp-mustache" id="plans_template">
       <div>
-        <section id="gsuite-signup-choose-plans" class="p4 mt4">
-        <h2>Choose your payment plan</h2>
-        <h3 class="h5 bold"> G Suite Basic</h3>
-        <form method="POST" action-xhr="http://localhost:5001/ampstart-dev-skrish/us-central1/savePlan" id="planselectionplan" class="mt4" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">
+      <section id="gsuite-signup-choose-plans" class="p4 mt4">
+        <h2 class="h4 mb2">Choose your payment plan</h2>
+        <h3 class="subhead1 bold"> G Suite Basic</h3>
+        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt4" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">
           <ul class="gsuite-plan-selection-list list-reset">
             <%#plans%>
             <li class="border p2 my2">
@@ -220,7 +217,7 @@
           </ul>
         </form>
 
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
           <button id="prev" class="ampstart-btn ampstart-btn-secondary" disabled>Back</button>
           <amp-selector layout="container" disabled multiple>
             <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
@@ -231,19 +228,16 @@
               <li class="mx1" option="5"></li>
             </ul>
           </amp-selector>
-          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:planselectionplan.submit">Next</button>
+          <button id="next" class="ampstart-btn mr1" on="tap:planselectionplan.submit">Next</button>
         </footer>
-
-
       </section>
       </div>
     </template>
-    
     <section id="gsuite-signup-payment" class="p4 mt4">
-      <h2>Review & Checkout</h2>
+      <h2 class="h4 mb2">Review & Checkout</h2>
       <!-- Checkout iframe here  -->
       
-      <footer class="flex justify-between">
+      <footer class="flex justify-between items-center">
           <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
           <amp-selector layout="container" disabled multiple>
             <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
@@ -254,18 +248,20 @@
               <li class="mx1" option="5" selected></li>
             </ul>
           </amp-selector>
-          <button id="next" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">Next</button>
+          <button id="next" class="ampstart-btn mr1" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">Next</button>
         </footer>
-    </section>
-    
+    </section>   
     <section id="gsuite-signup-end-summary" class="p4 mt4 center flex flex-column items-center justify-center">
       <amp-img src='data:image/png;base64,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' width="186" height="99" alt="Subscription completed" layout="fixed"></amp-img>
-      <h2 class="h4 my3">You're all set with G Suite.<br/>Ready to get started?</h2>
-      <p>
-        Check your email user@domain.com on a laptop or desktop computer to get started
+      <h2 class="h4 my3 ">You're all set with G Suite.<br/>Ready to get started?</h2>
+      <p class="body2 mb3 left-align">
+        For the best experience we recommend setting up your account on a desktop or laptop.
       </p>
+      <p class="body2 mb3 left-align">
+        Check your email <span [text]="state.userInfo.email"></span> for a link to get started. 
+      </p>
+      <button class="ampstart-btn ampstart-btn-secondary self-start pl0">Or continue setup on mobile</button>
     </section>
-
   </main>
 </body>
 </html>
