@@ -274,6 +274,15 @@ amp-selector [option][selected] {
   color: var(--color-grey);
 }
 
+/* Checkout page */
+.empty-form:not([selected]) + .filled-form {
+  display: none;
+}
+
+.empty-form[selected] {
+  display: none;
+}
+
 
 /*Page state*/
 #gsuite-welcome,

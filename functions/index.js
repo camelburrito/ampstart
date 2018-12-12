@@ -461,7 +461,8 @@ exports.createAccount = functions.https.onRequest((req, res) => {
         "No long term commitment",
         "Pay monthly (starting DD/MM/YY)",
         "Add or remove users and email addresses"
-      ]
+      ],
+      "selected": "true"
     },
     {
       "name": "Annual plan",

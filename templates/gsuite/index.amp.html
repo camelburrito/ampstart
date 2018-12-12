@@ -223,7 +223,7 @@
     <section id="gsuite-signup-account-interstital" class="p4 mt4 flex flex-column justify-center items-center">
       <h2 class="h4 relative my2">Make it with <amp-img src="https://gsuite.google.com/img/logo/lockup_gsuite.svg" width="83" height="21" layout="fixed" alt="Gsuite" class="mr2"></amp-img></h2>
       <p class="body2 my1">
-        Almost there , we're creating your account
+        Almost there, we're creating your account. It'll be ready in a minute.
       </p>
       <svg class="material-spinner block" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
          <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -234,14 +234,14 @@
       <section id="gsuite-signup-choose-plans" class="p4 mt4">
         <h2 class="h4 mb2">Choose your payment plan</h2>
         <h3 class="subhead1 bold"> G Suite Basic</h3>
-        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt4" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})">
+        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt4">
           <ul class="gsuite-plan-selection-list list-reset">
             <%#plans%>
             <li class="border p2 my2">
               <label class="flex flex-column justify-center">
                 <div class="flex items-center justify-between">
                   <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
-                    <input type="radio" value="<%id%>" name="plan" class="relative" required="required">
+                    <input type="radio" value="<%id%>" name="plan" class="relative">
                   </div>
                   <h4 class="h6 inline"><%name%></h4>
                   <p class="inline subhead1 bold"><%price%> <span class="subhead2"><%term%></span></p>
@@ -270,15 +270,18 @@
               <li class="mx1" option="5"></li>
             </ul>
           </amp-selector>
-          <button id="next" class="ampstart-btn mr1" on="tap:planselectionplan.submit">Next</button>
+          <button id="next" class="ampstart-btn mr1" type="submit">Next</button>
         </footer>
       </section>
       </div>
     </template>
-    <section id="gsuite-signup-payment" class="p4 mt4">
+    <section id="gsuite-signup-payment" class="p4">
       <h2 class="h4 mb2">Review & Checkout</h2>
       <!-- Checkout iframe here  -->
-      
+      <amp-selector id="checkout_imgs">
+        <amp-img src="../../img/gsuite/payment.png" width="750" height="1606" alt="Payment form Filled" layout="responsive" option="1" class="empty-form"></amp-img>
+        <amp-img src="../../img/gsuite/payment_fill.png" width="750" height="1290" alt="Payment form Filled" layout="responsive" option="2" class="filled-form"></amp-img>
+      </amp-selector>
       <footer class="flex justify-between items-center">
           <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
           <amp-selector layout="container" disabled multiple>
