@@ -70,6 +70,15 @@
         }
       }
     ],
+    "bringorbuy": {
+      "input": {
+        "type": "url",
+        "placeholder": "Your domain",
+        "id": "bringdomain",
+        "name": "bringdomain",
+        "required": "required"
+      }
+    },
     "domainname": {
       "input": {
         "type": "url",

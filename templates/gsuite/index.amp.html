@@ -26,6 +26,10 @@
           "next": "signup-account-info",
           "prev": "signup-user-info"
         },
+        "signup-bring-or-buy-domain": {
+          "next": "signup-account-info",
+          "prev": "signup-user-info"
+        },
         "signup-account-info": {
           "next": "signup-account-interstital",
           "prev": "signup-existing-domain-conf"
@@ -71,7 +75,7 @@
       <!-- AMP-Access-Control-Allow-Source-Origin  -->
       <form method="POST" action-xhr=" /api/userinfosubmit" on="submit-success:AMP.setState({
         state: {
-          currentPage: state[state.currentPage].next || state.currentPage,
+          currentPage: event.response.domain?state[state.currentPage].next : 'signup-bring-or-buy-domain',
           userInfo: {domain: event.response.domain || ''}
         }
       })" class="mt4" id="userinfoform">
@@ -97,14 +101,52 @@
         <button id="next" class="ampstart-btn mr1" on="tap:userinfoform.submit">Next</button>
       </footer>
     </section>
+    <section id="gsuite-signup-bring-or-buy-domain" class="p4 mt4">
+      <h2 class="h4 mb2"><span [text]="state.userInfo.fn" class="gsuite-signup-firstname"></span>, does your business have a domain?</h2>
+      <p class="body2">You'll use a domain to setup your custom email addresses like <span [text]="state.userInfo.fn"></span>@<strong>yourcompany.com</strong></p>
+      <form method="POST" action-xhr="/api/domainverify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt2" id="bringorbuy">
+        <amp-selector on="select:domain.focus">
+          <ul class="list-reset gsuite-bring-or-buy-list">
+            <li option="1" class="p2 mt2" on="">
+              <h3 class="subhead2"> Yes, I have a domain</h3>
+              <p class="caption mt2">Enter your domain(don't worry, your current email and website won't be affected)</p>
+              <!-- Start Input -->
+              <div class="ampstart-input inline-block relative m0 p0 mb1 mt2 gsuite-bring-or-buy-input">
+                <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {domain: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Your domain" required="required">
+                <label for="domain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Your domain</label>
+              </div>
+              <!-- End Input-->
+              <p class="caption gsuite-bring-or-buy-input-example">E.g. yourcompany.com</p>
+            </li>
+            <li option="2" class="p2 mt2" disabled>
+              <h3 class="subhead2">No, I'd like to buy a domain</h3>
+              <p class="caption mt2">Get a custom domain like yourcompany.com starting at $12/year</p>
+            </li>
+        </ul>
+        </amp-selector>
+      </form>
+      <footer class="flex justify-between items-center">
+        <button id="prev" class="ampstart-btn ampstart-btn-secondary" on="tap:AMP.setState({state: {currentPage: state[state.currentPage].prev || state.currentPage}})">Back</button>
+        <amp-selector layout="container" disabled multiple>
+          <ul class="gsuite-signup-progress flex justify-center items-center p0 m0">
+            <li class="mx1" option="1" selected></li>
+            <li class="mx1" option="2" selected></li>
+            <li class="mx1" option="3"></li>
+            <li class="mx1" option="4"></li>
+            <li class="mx1" option="5"></li>
+          </ul>
+        </amp-selector>
+        <button id="next" class="ampstart-btn mr1" on="tap:domainverify.submit">Next</button>
+      </footer>
+    </section>
     <section id="gsuite-signup-existing-domain-conf" class="p4 mt4">
       <h2 class="h4 mb2">Great! Want to set up G Suite with your existing domain?</h2>
-      <p class="body2">Enter your domain to setup cusom email like <span [text]="state.userInfo.email"></span></p>
+      <p class="body2">Enter your domain to setup cusom email like <span [text]="state.userInfo.domain"></span></p>
       <form method="POST" action-xhr=" /api/domainverify" on="submit-success:AMP.setState({state: {currentPage: state[state.currentPage].next || state.currentPage}})" class="mt2" id="domainverify">
         <!-- Start Input -->
         <div class="ampstart-input inline-block relative m0 p0 mb1 ">
-          <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Domain" required="required">
-          <label for="domain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Domain</label>
+          <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {domain: event.value}}})" name="confdomain" id="confdomain" class="block border-none p0 m0" placeholder="Domain" required="required">
+          <label for="confdomain" class="absolute top-0 right-0 bottom-0 left-0" aria-hidden="true">Domain</label>
         </div>
         <!-- End Input-->
         <p class="caption">

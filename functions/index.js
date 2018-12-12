@@ -4,9 +4,15 @@ const path = require('path');
 var https = require("https");
 var url = require('url');
 
+// Node.js doesn't have a built-in multipart/form-data parsing library.
+// Instead, we can use the 'busboy' library from NPM to parse these requests.
+const Busboy = require('busboy');
+
 // travelData is the sample data that we use to demo filtering on the frontend.
 const src = path.join(path.dirname(__filename), 'travel-data.json');
 const travelData = JSON.parse(fs.readFileSync(src, 'utf8'));
+
+
 
 /**
  * cors is HTTP middleware that sets an AMP-specific cross origin resource
@@ -391,7 +397,29 @@ exports.userInfoSubmit = functions.https.onRequest((req, res) => {
   res.header('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.header('access-control-allow-credentials', 'true');
   res.header('Content-Type', 'application/json');
-  res.status(200).send({"status": "success", "domain": "blah.com"});
+
+  const busboy = new Busboy({headers: req.headers});
+
+  const fields = {};
+
+  busboy.on('field', (fieldname, val) => {
+    // TODO(developer): Process submitted field values here
+    console.log(`Processed field ${fieldname}: ${val}.`);
+    fields[fieldname] = val;
+  });
+
+  busboy.end(req.rawBody);
+  let domain = "";
+  let emailid = fields['emailid'];
+  const commonDomains = ['gmail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.co.uk', 'comcast.net', 'microsoft.com', 'aol.com', 'hotmail.com', 'email.com', 'test.com', 'msn.com', 'live.com', 'ymail.com', 'outlook.com', 'verizon.net', 'att.net', 'sbcglobal.net'];
+  if (emailid) {
+    domain = emailid.split('@')[1];
+    if (domain && commonDomains.includes(domain)) {
+      domain = "";
+    }
+  }
+
+  res.status(200).send({"status": "success", "domain": domain});
 });
 
 exports.domainVerify = functions.https.onRequest((req, res) => {

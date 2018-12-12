@@ -233,6 +233,29 @@ main {
  }
 }
 
+/* Bring or Buy*/
+.gsuite-signup-firstname {
+  text-transform: capitalize;
+}
+
+.gsuite-bring-or-buy-list > [option]{
+  border: solid 2px var(--color-grey);
+  border-radius: 8px;
+}
+
+.gsuite-bring-or-buy-list > [option][selected] {
+  border: solid 2px var(--color-primary);
+}
+
+.gsuite-bring-or-buy-list > [option]:not([selected]) .gsuite-bring-or-buy-input,
+.gsuite-bring-or-buy-list > [option]:not([selected]) .gsuite-bring-or-buy-input-example {
+  display: none;
+}
+
+amp-selector [option][selected] {
+  outline: none;
+}
+
 /* Plans page */
 .gsuite-plan-selection-list > li {
   border-radius: 10px;
@@ -256,6 +279,7 @@ main {
 #gsuite-welcome,
 #gsuite-signup-user-info,
 #gsuite-signup-existing-domain-conf,
+#gsuite-signup-bring-or-buy-domain,
 #gsuite-signup-account-info,
 #gsuite-signup-account-info-user,
 #gsuite-signup-account-interstital,
@@ -269,6 +293,7 @@ main {
 
 .welcome #gsuite-welcome,
 .signup-user-info #gsuite-signup-user-info,
+.signup-bring-or-buy-domain #gsuite-signup-bring-or-buy-domain,
 .signup-existing-domain-conf #gsuite-signup-existing-domain-conf,
 .signup-account-info #gsuite-signup-account-info,
 .signup-account-info #gsuite-signup-account-info-user,
