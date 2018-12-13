@@ -7,7 +7,13 @@
 /* Typography */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Google Sans",Roboto,Arial,sans-serif;
+  letter-spacing: normal;
 }
+
+button,input,optgroup,select,textarea {
+  font-family: inherit;
+}
+
 .subhead1 {
   font-size: 1rem;
   line-height: 1.375rem;
@@ -114,12 +120,13 @@ main {
   left: 0;
   right: 0;
   height: var(--footer-height);
-  margin-bottom: 4px;
+  background: var(--color-secondary);
 }
 
 /* Button */
 .ampstart-btn {
   font-family: "Google Sans",Roboto,Arial,sans-serif;
+  font-size: 0.875rem;
   border: 0;
   line-height: 1rem;
   padding: .5em 1em;
