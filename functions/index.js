@@ -459,7 +459,7 @@ exports.createAccount = functions.https.onRequest((req, res) => {
       "term": "/user/month",
       "features": [
         "No long term commitment",
-        "Pay monthly (starting DD/MM/YY)",
+        "Pay monthly (starting 12/19/19)",
         "Add or remove users and email addresses"
       ],
       "selected": "true"
@@ -470,11 +470,15 @@ exports.createAccount = functions.https.onRequest((req, res) => {
       "price": "$50",
       "term": "/user/year",
       "features": [
-        "Pay monthly (starting DD/MM/YY)",
-        "Add or remove users and email addresses"
+        "Requires a 1 year contract",
+        "Pay monthly based on users committed (starting 12/19/19)",
+        "Add users as needed"
       ]
     }
   ];
+  for(let i=0; i<500000; i++) {
+    //do something
+  }
   res.status(200).send({"status": true, "plans": plans});
 });
 

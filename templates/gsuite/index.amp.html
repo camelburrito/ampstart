@@ -109,7 +109,7 @@
           <ul class="list-reset gsuite-bring-or-buy-list">
             <li option="1" class="p2 mt2" on="">
               <h3 class="subhead2"> Yes, I have a domain</h3>
-              <p class="caption mt2">Enter your domain(don't worry, your current email and website won't be affected)</p>
+              <p class="caption mt2">Enter your domain (don't worry, your current email and website won't be affected)</p>
               <!-- Start Input -->
               <div class="ampstart-input inline-block relative m0 p0 mb1 mt2 gsuite-bring-or-buy-input">
                 <input type="text" value="" [value]="state.userInfo.domain" on="input-throttled:AMP.setState({state: { userInfo: {domain: event.value}}})" name="domain" id="domain" class="block border-none p0 m0" placeholder="Your domain" required="required">
@@ -136,7 +136,7 @@
             <li class="mx1" option="5"></li>
           </ul>
         </amp-selector>
-        <button id="next" class="ampstart-btn mr1" on="tap:domainverify.submit">Next</button>
+        <button id="next" class="ampstart-btn mr1" on="tap:bringorbuy.submit">Next</button>
       </footer>
     </section>
     <section id="gsuite-signup-existing-domain-conf" class="px3 py4 mt4">
@@ -155,7 +155,7 @@
       </form>
       <ul class="gsuite-domain-features mt2 pl0 h5">
         <li class="relative caption pl4 my2"> You'll use this domain to set up your G Suite account.</li>
-        <li class="relative caption pl4 my2"> Dont worry, your emails & website won't be affected.</li>
+        <li class="relative caption pl4 my2"> Don't worry, your emails & website won't be affected.</li>
       </ul>
       <button class="gsuite-domain-use-another ampstart-btn ampstart-btn-secondary mt2 pl0">
         I want to use a different domain
@@ -238,21 +238,23 @@
           <ul class="gsuite-plan-selection-list list-reset">
             <%#plans%>
             <li class="border p2 my2">
-              <label class="flex flex-column justify-center">
-                <div class="flex items-center justify-between">
-                  <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
-                    <input type="radio" value="<%id%>" name="plan" class="relative">
-                  </div>
-                  <h4 class="h6 inline"><%name%></h4>
-                  <p class="inline subhead1 bold"><%price%> <span class="subhead2"><%term%></span></p>
+              <label class="flex justify-start">
+                <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
+                  <input type="radio" value="<%id%>" name="plan" class="relative">
                 </div>
-                <ul class="list-reset pl4 ml1 caption">
-                  <%#features%>
-                  <li class="my1">
-                   <%.%>
-                  </li>
-                  <%/features%>
-                </ul>
+                <div class="flex flex-column pl2 mt1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="subhead2 inline"><%name%></h4>
+                    <p class="inline subhead2"><%price%> <span class="subhead2"><%term%></span></p>
+                  </div>
+                  <ul class="list-reset caption">
+                    <%#features%>
+                    <li class="my1">
+                     <%.%>
+                    </li>
+                    <%/features%>
+                  </ul>
+                </div>
               </label>
             </li>
             <%/plans%>

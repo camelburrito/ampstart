@@ -17,6 +17,7 @@
       "css-path": "templates/gsuite/page.css",
       "font-stylesheets": [
         "https://fonts.googleapis.com/css?family=Google+Sans",
+        "https://fonts.googleapis.com/css?family=Google+Sans:500",
         "https://fonts.googleapis.com/css?family=Roboto"
       ],
       "favicon": {
