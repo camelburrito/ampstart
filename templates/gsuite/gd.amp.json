@@ -1,0 +1,114 @@
+{
+  "gsuite": {
+    "head-tag": {
+      "title": "Signup for Gsuite",
+      "canonical-path": "https://gsuite.google.com/",
+      "extensions": [
+        "amp-form",
+        "amp-selector",
+        "amp-bind"
+      ],
+      "templates": [
+        {
+          "name": "amp-mustache",
+          "version": "0.2"
+        }
+      ],
+      "css-path": "templates/gsuite/page.css",
+      "font-stylesheets": [
+        "https://fonts.googleapis.com/css?family=Google+Sans",
+        "https://fonts.googleapis.com/css?family=Google+Sans:500",
+        "https://fonts.googleapis.com/css?family=Roboto"
+      ],
+      "favicon": {
+        "href": "https://gsuite.google.com/favicon.ico"
+      }
+    },
+    "userinfofields": [
+      {
+        "input": {
+          "type": "text",
+          "value": "",
+          "placeholder": "First name",
+          "id": "firstname",
+          "name": "firstname",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {fn: event.value}}})",
+          "required": "required"
+        }
+      },
+      {
+        "input": {
+          "type": "text",
+          "value": "",
+          "placeholder": "Last name",
+          "id": "lastname",
+          "name": "lastname",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {ln: event.value}}})",
+          "required": "required"
+        }
+      },
+      {
+        "input": {
+          "type": "email",
+          "value": "",
+          "placeholder": "Current email address",
+          "id": "emailid",
+          "name": "emailid",
+          "on": "input-throttled:AMP.setState({state: { userInfo: {email: event.value}}})",
+          "required": "required"
+        }
+      },
+      {
+        "select": {
+          "options": [
+            "United States", "Algeria", "Argentina", "Australia", "Austria", "Barbados", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cameroon", "Canada", "China", "Colombia", "Cote d'Ivoire", "Czech Republic", "Denmark ", "Egypt", "Finland", "France", "Germany", "Greece",
+            "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Irak", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kuwait", "Malaysia", "Mexico", "Morocco", "Nepal", "Netherlands", "New Zealand", "Norway", "Pakistan", "Philippines", "Poland",
+            "Portugal", "Qatar", "Romania", "Russia", "Samoa", "Saudi Arabia", "Sri Lanka", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Tonga", "Tunisia", "Turkey", "United Arab Emirates", "United Kingdom"
+          ],
+          "placeholder": "Country",
+          "id": "country",
+          "name": "country"
+        }
+      }
+    ],
+    "bringorbuy": {
+      "input": {
+        "type": "url",
+        "placeholder": "Your domain",
+        "id": "bringdomain",
+        "name": "bringdomain",
+        "required": "required"
+      }
+    },
+    "domainname": {
+      "input": {
+        "type": "url",
+        "placeholder": "Domain",
+        "id": "domain",
+        "name": "domain",
+        "required": "required"
+      }
+    },
+    "createaccount": [
+      {
+        "input": {
+          "type": "text",
+          "placeholder": "Username",
+          "id": "username",
+          "name": "username",
+          "required": "required"
+        }
+      },
+      {
+        "input": {
+          "type": "password",
+          "placeholder": "Password",
+          "id": "password",
+          "name": "password",
+          "required": "required"
+        }
+      }
+    ]
+    
+  }
+}
