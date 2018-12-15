@@ -1,0 +1,23 @@
+{
+  "gsuite": {
+    "head-tag": {
+      "title": "Godaddy",
+      "canonical-path": "https://gsuite.google.com/",
+      "extensions": [
+        "amp-form",
+        "amp-selector",
+        "amp-bind"
+      ],
+      "templates": [
+        {
+          "name": "amp-mustache",
+          "version": "0.2"
+        }
+      ],
+      "css-path": "templates/gsuite/page.css",
+      "favicon": {
+        "href": "https://gsuite.google.com/favicon.ico"
+      }
+    }
+  }
+}

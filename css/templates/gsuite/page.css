@@ -321,7 +321,8 @@ amp-selector [option][selected] {
 .signup-choose-plans #gsuite-signup-account-info,
 .signup-choose-plans #gsuite-signup-choose-plans,
 .signup-payment #gsuite-signup-payment,
-.signup-end-summary #gsuite-signup-end-summary {
+.signup-end-summary #gsuite-signup-end-summary,
+.gsuite-signup-end-page {
   transform: translateX(0);
   opacity: 1;
   transition: transform 233ms cubic-bezier(0,0,.21,1);

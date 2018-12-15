@@ -1,0 +1,28 @@
+{
+  "gsuite": {
+    "head-tag": {
+      "title": "Signup for Gsuite",
+      "canonical-path": "https://gsuite.google.com/",
+      "extensions": [
+        "amp-form",
+        "amp-selector",
+        "amp-bind"
+      ],
+      "templates": [
+        {
+          "name": "amp-mustache",
+          "version": "0.2"
+        }
+      ],
+      "css-path": "templates/gsuite/page.css",
+      "font-stylesheets": [
+        "https://fonts.googleapis.com/css?family=Google+Sans",
+        "https://fonts.googleapis.com/css?family=Google+Sans:500",
+        "https://fonts.googleapis.com/css?family=Roboto"
+      ],
+      "favicon": {
+        "href": "https://gsuite.google.com/favicon.ico"
+      }
+    }
+  }
+}

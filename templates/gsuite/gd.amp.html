@@ -2,7 +2,7 @@
 <!doctype html>
 <html ⚡>
 {{> ../../utils/amp-page-head.snip.html}}
-<body class="gsuite-signup signup-end-summary" [class]="'gsuite-signup ' + state.currentPage">
+<body class="gsuite-signup welcome" [class]="'gsuite-signup ' + state.currentPage">
   <amp-state id="state">
     <script type="application/json">
       {
@@ -304,7 +304,7 @@
       <p class="body2 mb3 left-align">
         Before we activate your Gmail, we just need confirm that you own <strong [text]="state.userInfo.domain"></strong> on GoDaddy. Click below to verify that you own your domain.
       </p>
-      <button class="ampstart-btn pl0">Verify my domain at GoDaddy</button>
+      <a class="ampstart-btn pl0" href="/templates/gsuite/godaddy.amp.html">Verify my domain at GoDaddy</a>
     </section>
   </main>
 </body>
