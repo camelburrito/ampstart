@@ -233,16 +233,22 @@
       <div>
       <section id="gsuite-signup-choose-plans" class="px3 py4 mt4">
         <h2 class="h4 mb2">Choose your payment plan</h2>
-        <h3 class="subhead1 bold"> G Suite Basic</h3>
-        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt4">
+        <h3 class="subhead1 bold"> G Suite Basic <span on="tap:gsuitebasicfeatures.toggleVisibility" class="ampstart-btn ampstart-btn-secondary" role="button" tabindex="1>Show details</span></h3>
+        <ul class="list-reset caption gsuite-basic-features" id="gsuitebasicfeatures" hidden>
+          <li class="pl4 my2 relative">Professional email through Gmail</li>
+          <li class="pl4 my2 relative">30GB storage & collaboration</li>
+          <li class="pl4 my2 relative">Calendar and chat built for teams</li>
+          <li class="pl4 my2 relative">Add more users & email addresses for $5/user/month</li>
+        </ul>
+        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt1">
           <ul class="gsuite-plan-selection-list list-reset">
             <%#plans%>
             <li class="border p2 my2">
-              <label class="flex justify-start">
+              <label class="flex justify-between">
                 <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
                   <input type="radio" value="<%id%>" name="plan" class="relative">
                 </div>
-                <div class="flex flex-column pl2 mt1">
+                <div class="flex flex-column mt1 gsuite-plan-details">
                   <div class="flex items-center justify-between">
                     <h4 class="subhead2 inline"><%name%></h4>
                     <p class="inline subhead2"><%price%> <span class="subhead2"><%term%></span></p>
@@ -299,7 +305,7 @@
         </footer>
     </section>   
     <section id="gsuite-signup-end-summary" class="px3 py4 flex flex-column items-start">
-      <p class="mt2"><span class="align-middle">{{> ../../img/gsuite/check.svg}}</span><span [text]="state.userInfo.firstname" class="pl1"></span>, your G Suite account is created</p>
+      <p class="mt2"><span class="align-middle">{{> ../../img/gsuite/check.svg}}</span><span [text]="state.userInfo.fn" class="pl1"></span>, your G Suite account is created</p>
       <h2 class="h4 my3 left-align">Lastly, let's activate Gmail by verifying your domain</h2>
       <p class="body2 mb3 left-align">
         Before we activate your Gmail, we just need confirm that you own <strong [text]="state.userInfo.domain"></strong> on GoDaddy. Click below to verify that you own your domain.

@@ -153,7 +153,7 @@
           Suggested based on your email <span [text]="state.userInfo.email"></span>
         </p>
       </form>
-      <ul class="gsuite-domain-features mt2 pl0 h5">
+      <ul class="gsuite-domain-features list-reset mt2 pl0 h5">
         <li class="relative caption pl4 my2"> You'll use this domain to set up your G Suite account.</li>
         <li class="relative caption pl4 my2"> Don't worry, your emails & website won't be affected.</li>
       </ul>
@@ -233,16 +233,22 @@
       <div>
       <section id="gsuite-signup-choose-plans" class="px3 py4 mt4">
         <h2 class="h4 mb2">Choose your payment plan</h2>
-        <h3 class="subhead1 bold"> G Suite Basic</h3>
-        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt4">
+        <h3 class="subhead1 bold"> G Suite Basic <span on="tap:gsuitebasicfeatures.toggleVisibility" class="ampstart-btn ampstart-btn-secondary" role="button" tabindex="1">Show details</span></h3>
+        <ul class="list-reset caption gsuite-basic-features" id="gsuitebasicfeatures" hidden>
+          <li class="pl4 my2 relative">Professional email through Gmail</li>
+          <li class="pl4 my2 relative">30GB storage & collaboration</li>
+          <li class="pl4 my2 relative">Calendar and chat built for teams</li>
+          <li class="pl4 my2 relative">Add more users & email addresses for $5/user/month</li>
+        </ul>
+        <form method="POST" action-xhr="/api/saveplan" id="planselectionplan" class="mt1">
           <ul class="gsuite-plan-selection-list list-reset">
             <%#plans%>
             <li class="border p2 my2">
-              <label class="flex justify-start">
+              <label class="flex justify-between">
                 <div class="gsuite-plan-radio ampstart-input ampstart-input-radio inline relative m0 p0 ">
                   <input type="radio" value="<%id%>" name="plan" class="relative">
                 </div>
-                <div class="flex flex-column pl2 mt1">
+                <div class="flex flex-column mt1 gsuite-plan-details">
                   <div class="flex items-center justify-between">
                     <h4 class="subhead2 inline"><%name%></h4>
                     <p class="inline subhead2"><%price%> <span class="subhead2"><%term%></span></p>
